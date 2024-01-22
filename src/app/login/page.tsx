@@ -25,8 +25,8 @@ export default function LoginPage() {
         try {
             setLoading(true);
             const res = await axios.post("/api/users/login", user);
-            ///console.log("username", res.data);
-            console.log(res.data.username);
+            //console.log("username", res.data);
+
             toast.success("User logged in successfully");
             if (res.status === 200) {
                 // router.push(`/profile/${res.data.username}`);

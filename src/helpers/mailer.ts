@@ -46,7 +46,7 @@ export const sendMail = async ({ email, emailType, userId }: any) => {
             <p>If you did not make this request, please ignore this email.</p>`,
         };
         const mailResponse = await transport.sendMail(mailOptions);
-        console.log("Mail Response ", mailResponse);
+        //console.log("Mail Response ", mailResponse);
         return mailResponse;
     } catch (error: any) {
         throw new Error(error.message);

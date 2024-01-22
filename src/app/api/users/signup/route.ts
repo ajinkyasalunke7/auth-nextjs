@@ -12,7 +12,7 @@ export async function POST(request: NextRequest) {
         const { username, email, password } = reqBody;
         //console.log(reqBody);
         if (!username || !email || !password) {
-            console.log("Invalid username or email or password");
+            // console.log("Invalid username or email or password");
         }
 
         //Check user
@@ -29,9 +29,9 @@ export async function POST(request: NextRequest) {
         const hashedPassword = await bcryptjs.hash(password, salt);
 
         const newUser = new User({ username, email, password: hashedPassword });
-        console.log(newUser);
+        //console.log(newUser);
         const savedUser = await newUser.save();
-        console.log(savedUser);
+        //console.log(savedUser);
 
         //send email to verify
         await sendMail({ email, emailType: "VERIFY", userId: savedUser._id });
