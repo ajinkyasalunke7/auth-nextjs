@@ -80,7 +80,7 @@ export default function SignupPage() {
                 className="p-2 border border-red-300  rounded-lg mb-4 focus:outline-none focus:border-gray-600"
                 onClick={onSignup}
             >
-                {buttonDisabled ? "No Signup" : "Singup"}
+                {buttonDisabled ? "No Signup" : "Sign up"}
             </button>
             <Link href="/login">Visit Login Page</Link>
         </div>
