@@ -27,7 +27,9 @@ export const sendMail = async ({ email, emailType, userId }: any) => {
                 pass: process.env.MAIL_TRAP_PASS,
             },
         });
-        const msg = `${process.env.DOMAIN}/verifyemail?token=${hashedToken}`;
+        const domain = process.env.DOMAIN;
+        console.log(domain);
+        const msg = `${domain}/verifyemail?token=${hashedToken}`;
         const mailOptions = {
             from: "ajinkya@gmail.com",
             to: email,
@@ -35,9 +37,7 @@ export const sendMail = async ({ email, emailType, userId }: any) => {
                 emailType === "VERIFY"
                     ? "Verify your email"
                     : "Reset your password",
-            html: `<p>Click <a href="${
-                process.env.DOMAIN
-            }/verifyemail?token=${hashedToken}">here</a> to ${
+            html: `<p>Click <a href="${domain}/verifyemail?token=${hashedToken}">here</a> to ${
                 emailType === "VERIFY"
                     ? "Verify your email"
                     : "Reset your password"
