@@ -6,6 +6,12 @@ import axios from "axios";
 import toast, { Toaster } from "react-hot-toast";
 
 export default function LoginPage() {
+    const handleEnter = (event: any) => {
+        if (event.key === "Enter") {
+            // Call your function here
+            onLogin();
+        }
+    };
     const router = useRouter();
     const [loading, setLoading] = useState(false);
 
@@ -62,6 +68,7 @@ export default function LoginPage() {
                 value={user.password}
                 onChange={(e) => setUser({ ...user, password: e.target.value })}
                 placeholder="Password"
+                onKeyDown={handleEnter}
             />
             <button
                 className="p-2 border border-red-300  rounded-lg mb-4 focus:outline-none focus:border-gray-600"

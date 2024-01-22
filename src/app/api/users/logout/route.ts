@@ -9,7 +9,7 @@ connect();
 export async function GET(request: NextRequest) {
     try {
         const response = NextResponse.json({
-            message: "Logut Successfull",
+            message: "Logout Successfull",
             success: true,
         });
         response.cookies.set("token", "", {
