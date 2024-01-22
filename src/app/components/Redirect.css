@@ -1,0 +1,18 @@
+.redirect-container {
+    text-align: center;
+    padding: 20px;
+    font-family: Arial, sans-serif;
+}
+
+.countdown-text {
+    font-size: 18px;
+    margin-top: 10px;
+    color: #333;
+}
+
+/* Optionally, you can add additional styling for the countdown number */
+.countdown-number {
+    font-size: 24px;
+    font-weight: bold;
+    color: #007bff; /* Change the color to your preference */
+}

@@ -1,6 +1,7 @@
 import User from "@/models/user.model";
 import { NextRequest, NextResponse } from "next/server";
 import { connect } from "@/dbConfig/dbConfig";
+import { Router } from "next/router";
 
 connect();
 

@@ -4,7 +4,8 @@ import { useRouter } from "next/navigation";
 
 import axios from "axios";
 import toast from "react-hot-toast";
-import { useState } from "react";
+import { useEffect, useState } from "react";
+import Redirect from "../components/Redirect";
 
 export default function ProfilePage() {
     const router = useRouter();
@@ -19,6 +20,9 @@ export default function ProfilePage() {
             toast.error(error.message);
         }
     };
+    useEffect(() => {
+        getUserDetails();
+    }, []);
 
     const getUserDetails = async () => {
         const res = await axios.get("/api/users/currentUser");
@@ -46,7 +50,9 @@ export default function ProfilePage() {
             </button>
             <button
                 className="p-2 mt-10 border border-white  rounded-lg mb-4 focus:outline-none focus:border-gray-600"
-                onClick={getUserDetails}
+                onClick={() => {
+                    alert("button Invoked");
+                }}
             >
                 Get Data
             </button>

@@ -27,6 +27,9 @@ export default function SignupPage() {
             setLoading(true);
             const res = await axios.post("/api/users/signup", user);
             console.log(res.data);
+            alert(
+                "Verify your account. \n link has been sent to your email address."
+            );
             toast.success("User signed up successfully");
             router.push("/login");
             if (res.status === 200) {
@@ -52,44 +55,94 @@ export default function SignupPage() {
         }
     }, [user]);
     return (
-        <div className="flex flex-col items-center justify-center min-h-screen py-2">
-            <h1>{!loading ? "Signup" : "Processing"}</h1>
-            <hr />
-            <label htmlFor="username">username</label>
-            <input
-                className="p-2 text-black border-gray-300 rounded-lg mb-2 focus:outline focus:border-gray-300"
-                type="text"
-                id="username"
-                value={user.username}
-                onChange={(e) => setUser({ ...user, username: e.target.value })}
-                placeholder="Username"
-            />
-            <label htmlFor="email">email</label>
-            <input
-                className="p-2 text-black border-gray-300 rounded-lg mb-2 focus:outline focus:border-gray-300"
-                type="email"
-                id="email"
-                value={user.email}
-                onChange={(e) => setUser({ ...user, email: e.target.value })}
-                placeholder="Email"
-            />
-            <label htmlFor="password">password</label>
-            <input
-                className="p-2 text-black border-gray-300 rounded-lg mb-2 focus:outline focus:border-gray-300"
-                type="password"
-                id="password"
-                value={user.password}
-                onChange={(e) => setUser({ ...user, password: e.target.value })}
-                placeholder="Password"
-                onKeyDown={handleEnter}
-            />
-            <button
-                className="p-2 border border-red-300  rounded-lg mb-4 focus:outline-none focus:border-gray-600"
-                onClick={onSignup}
-            >
-                {buttonDisabled ? "No Signup" : "Sign up"}
-            </button>
-            <Link href="/login">Visit Login Page</Link>
-        </div>
+        <>
+            <div className="flex justify-center items-center h-screen bg-indigo-600 text-black">
+                <div className="w-96 p-6 shadow-lg bg-white rounded-md">
+                    <h1 className="text-3xl block text-center font-semibold">
+                        <i className="fa-solid fa-user" />
+                        {!loading ? "Signup" : "Processing"}
+                    </h1>
+                    <hr className="mt-3" />
+                    <div className="mt-3">
+                        <label
+                            htmlFor="username"
+                            className="block text-base mb-2"
+                        >
+                            Username
+                        </label>
+                        <input
+                            type="text"
+                            id="username"
+                            className="border w-full text-base px-2 py-1 focus:outline-none focus:ring-0 focus:border-gray-600"
+                            placeholder="Enter Username..."
+                            value={user.username}
+                            onChange={(e) =>
+                                setUser({ ...user, username: e.target.value })
+                            }
+                        />
+                    </div>
+                    <div className="mt-3">
+                        <label htmlFor="email" className="block text-base mb-2">
+                            Email
+                        </label>
+                        <input
+                            type="email"
+                            id="email"
+                            className="border w-full text-base px-2 py-1 focus:outline-none focus:ring-0 focus:border-gray-600"
+                            placeholder="Enter Email..."
+                            value={user.email}
+                            onChange={(e) =>
+                                setUser({ ...user, email: e.target.value })
+                            }
+                        />
+                    </div>
+                    <div className="mt-3">
+                        <label
+                            htmlFor="password"
+                            className="block text-base mb-2"
+                        >
+                            Password
+                        </label>
+                        <input
+                            type="password"
+                            id="password"
+                            className="border w-full text-base px-2 py-1 focus:outline-none focus:ring-0 focus:border-gray-600"
+                            placeholder="Enter Password..."
+                            value={user.password}
+                            onChange={(e) =>
+                                setUser({ ...user, password: e.target.value })
+                            }
+                            onKeyDown={handleEnter}
+                        />
+                    </div>
+
+                    <div className="mt-3 flex justify-between items-center">
+                        {/* <div>
+                            <input type="checkbox" />
+                            <label>Remember Me</label>
+                        </div> */}
+                        <div className="mt-6">
+                            <Link
+                                href="/login"
+                                className="text-indigo-800  font-semibold text-sm"
+                            >
+                                ➡️ Login here
+                            </Link>
+                        </div>
+                    </div>
+                    <div className="mt-5">
+                        <button
+                            type="submit"
+                            className="border-2 border-indigo-700 bg-indigo-700 text-white py-1 w-full rounded-md hover:bg-transparent hover:text-indigo-700 font-semibold"
+                            onClick={onSignup}
+                        >
+                            <i className="fa-solid fa-right-to-bracket" />
+                            &nbsp;&nbsp;
+                            {buttonDisabled ? "No Signup" : "Sign up"}
+                        </button>
+                    </div>
+                </div>
+            </div>
+        </>
     );
 }
