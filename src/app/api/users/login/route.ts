@@ -22,7 +22,7 @@ export async function POST(request: NextRequest) {
 
         //Check password is correct
         const validPassword = await bcryptjs.compare(password, user.password);
-        console.log("Password ", validPassword);
+        //console.log("Password ", validPassword);
         if (!validPassword) {
             toast.error("Invalid password");
             return NextResponse.json(
