@@ -26,11 +26,11 @@ export default function SignupPage() {
         try {
             setLoading(true);
             const res = await axios.post("/api/users/signup", user);
-            console.log(res.data);
+            //console.log(res.data);
             alert(
                 "Verify your account. \n link has been sent to your email address."
             );
-            toast.success("User signed up successfully");
+            toast.success("User Account Created");
             router.push("/login");
             if (res.status === 200) {
                 router.push("/login");

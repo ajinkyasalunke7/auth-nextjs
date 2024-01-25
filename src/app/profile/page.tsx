@@ -14,7 +14,12 @@ export default function ProfilePage() {
         try {
             const res = await axios.get("/api/users/logout");
             toast.success("Logout Successfull");
-            router.push("/login");
+            //console.log(res);
+            if (res) {
+                router.push("/login");
+            } else {
+                alert("Error occurred while logging out");
+            }
         } catch (error: any) {
             console.log(error.message);
             toast.error(error.message);
@@ -43,7 +48,7 @@ export default function ProfilePage() {
             </h2>
             <hr />
             <button
-                className="p-2 mt-10 border border-red-300  rounded-lg mb-4 focus:outline-none focus:border-gray-600"
+                className="p-2 mt-10 border border-red-900  rounded-lg mb-4 focus:outline-none focus:border-gray-600"
                 onClick={logout}
             >
                 Logout
