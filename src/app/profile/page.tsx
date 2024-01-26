@@ -5,7 +5,6 @@ import { useRouter } from "next/navigation";
 import axios from "axios";
 import toast from "react-hot-toast";
 import { useEffect, useState } from "react";
-import Redirect from "../components/Redirect";
 
 export default function ProfilePage() {
     const router = useRouter();

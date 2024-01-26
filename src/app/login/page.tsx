@@ -33,7 +33,8 @@ export default function LoginPage() {
                 router.push("/profile");
             }
         } catch (error: any) {
-            toast.error(error.message);
+            toast.error("Invalid username or password");
+            setLoading(false);
             console.log("Login Failed " + error.message);
         } finally {
         }
@@ -100,7 +101,7 @@ export default function LoginPage() {
                         </div> */}
                         <div className="mt-3 text-sm flex">
                             <Link
-                                href="/forgot-password"
+                                href={`/forgot-password`}
                                 className="text-indigo-800 font-semibold pr-3"
                             >
                                 Forgot Password?
@@ -125,6 +126,14 @@ export default function LoginPage() {
                         </button>
                     </div>
                 </div>
+                <Toaster
+                    toastOptions={{
+                        style: { background: "rgb(51 65 85)", color: "#fff" },
+                    }}
+                    containerStyle={{
+                        top: 40,
+                    }}
+                />
             </div>
         </>
     );
